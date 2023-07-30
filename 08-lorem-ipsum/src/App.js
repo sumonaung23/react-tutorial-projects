@@ -6,7 +6,7 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('hello world.')
+    
   }
   
   return (
@@ -20,7 +20,13 @@ function App() {
         <button type='submit' className='btn'>generate</button>
       </form>
 
-      
+      <article className="lorem-text">
+        {
+          text.map((item, index) => {
+            return <p key={index}>{item}</p>
+          })
+        }
+      </article>
     </section>
   );
 }
