@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import List from './List'
 import Alert from './Alert'
 
+<<<<<<< HEAD
 const getLocalStorage = () => {
   let list = localStorage.getItem('list');
   if(list) {
@@ -22,11 +23,20 @@ function App() {
     msg: '',
     type: '',
   });
+=======
+function App() {
+  const [name, setName] = useState('');
+  const [list, setList] = useState([]);
+  const [isEditing, setIsEditing] = useState(false);
+  const [editID, setEditID] = useState(null);
+  const [alert, setAlert] = useState({show:false,msg:'',type:''});
+>>>>>>> 2a2d162b2e17f7eb14333c746926f5eb27ffbc80
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if(!name) {
       // display alert
+<<<<<<< HEAD
       showAlert(true, 'danger', 'please enter value');
     } else if (name && isEditing) {
       //deal with edit
@@ -43,12 +53,20 @@ function App() {
     } else {
       // show alert
       showAlert(true,'success','item added to the list')
+=======
+
+    } else if (name && isEditing) {
+      //deal with edit
+    } else {
+      // show alert
+>>>>>>> 2a2d162b2e17f7eb14333c746926f5eb27ffbc80
       const newItem = {id: new Date().getTime().toString(),title:name};
       setList([...list,newItem]);
       setName('');
     }
   }
 
+<<<<<<< HEAD
   const showAlert = (show=false, type="", msg="") => {
     setAlert({show, type, msg})
   }
@@ -74,11 +92,17 @@ function App() {
     localStorage.setItem('list',JSON.stringify(list))
   }, [list])
 
+=======
+>>>>>>> 2a2d162b2e17f7eb14333c746926f5eb27ffbc80
   return (
     <section className='section-center'> 
       <div className="grocery-container">
         <form className='grocery-form' onSubmit={handleSubmit}>
+<<<<<<< HEAD
           {alert.show && <Alert {...alert} removeAlert={showAlert} list={list} />}
+=======
+          {alert.show && <Alert />}
+>>>>>>> 2a2d162b2e17f7eb14333c746926f5eb27ffbc80
           <h3>grocery bud</h3>
           <div className="form-control">
             <input type="text" className='grocery' placeholder='eg.egg' value={name} onChange={(e) => setName(e.target.value) } />
@@ -89,8 +113,13 @@ function App() {
         </form>
         {list.length > 0 && 
           <div className="grocery-container">
+<<<<<<< HEAD
             <List items={list} removeItem={removeItem} editItem={editItem} />
             <button className="clear-btn" onClick={clearList}>clear items</button>
+=======
+            <List items={list} />
+            <button className="clear-btn">clear items</button>
+>>>>>>> 2a2d162b2e17f7eb14333c746926f5eb27ffbc80
           </div>
         }
       </div>
